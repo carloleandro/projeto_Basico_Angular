@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "18-03": {
+    "FormAngular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "18-03:build:production"
+              "browserTarget": "FormAngular:build:production"
             },
             "development": {
-              "browserTarget": "18-03:build:development"
+              "browserTarget": "FormAngular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "18-03:build"
+            "browserTarget": "FormAngular:build"
           }
         },
         "test": {
@@ -104,5 +104,5 @@
       }
     }
   },
-  "defaultProject": "18-03"
+  "defaultProject": "FormAngular"
 }

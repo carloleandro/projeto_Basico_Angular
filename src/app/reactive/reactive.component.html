@@ -1,0 +1,122 @@
+<div class="card-out">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Formulário Reactive</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form action="#" id="main-form" (ngSubmit)="submit()" [formGroup]="formData">
+                <div class="form-linha">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput placeholder="Digite seu nome aqui..." formControlName="name">
+                        <mat-error>
+                            <span *ngIf="formData.controls['name'].getError('required')">Campo Obrigatório!</span>
+                            <span *ngIf="formData.controls['name'].getError('minlength')">Caracteres
+                                Insuficientes!</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sobrenome</mat-label>
+                        <input type="text" matInput placeholder="Digite seu sobrenome aqui..."
+                            formControlName="lastname">
+                        <mat-error>
+                            <span *ngIf="formData.controls['lastname'].getError('required')">Campo
+                                Obrigatório!</span>
+                            <span *ngIf="formData.controls['lastname'].getError('minlength')">Caracteres
+                                Insuficientes!</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-linha">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Usarname</mat-label>
+                        <input type="text" matInput placeholder="Mínimo 3 caracteres..." formControlName="username">
+                        <mat-error>
+                            <span *ngIf="formData.controls['username'].getError('required')">Campo
+                                Obrigatório!</span>
+                            <span *ngIf="formData.controls['username'].getError('minlength')">Caracteres
+                                Insuficientes!</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>CPF</mat-label>
+                        <input type="number" matInput placeholder="CPF deve conter 11 digitos" formControlName="cpf">
+                        <mat-error>
+                            <span *ngIf="formData.controls['cpf'].getError('required')">Campo obrigatório!</span>
+                            <span *ngIf="formData.controls['cpf'].getError('min')">Caracteres
+                                Insuficientes!</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-linha">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Endereço</mat-label>
+                        <input type="text" matInput placeholder="Digite seu endereço aqui..." formControlName="address">
+                        <mat-error>
+                            <span *ngIf="formData.controls['address'].getError('required')">Campo Obrigatório!</span>
+                            <span *ngIf="formData.controls['address'].getError('minlength')">Caracteres
+                                Insuficientes!</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Complemento</mat-label>
+                        <input type="text" matInput placeholder="Digite o complemento, se houver..."
+                            formControlName="complement">
+                    </mat-form-field>
+                </div>
+                <div class="form-linha">
+                    <mat-form-field appearance="fill">
+                        <mat-label for="password">Senha</mat-label>
+                        <input type="password" name="password" matInput placeholder="Digite sua senha..."
+                            formControlName="password">
+                        <mat-error>
+                            <span *ngIf="formData.controls['password'].getError('required')">Campo
+                                Obrigatório!</span>
+                            <span *ngIf="formData.controls['password'].getError('minlength')">Mín. 6
+                                caracteres!</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label for="confirmSenha">Confirmação de Senha</mat-label>
+                        <input type="password" name="passwordconfirm" matInput placeholder="Digite sua senha..."
+                            formControlName="passwordconfirm">
+                        <mat-error>
+                            <span *ngIf="formData.controls['passwordconfirm'].getError('required')">Campo
+                                Obrigatório!</span>
+                            <span *ngIf="">Campos devem ser iguais!</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="fill" class="grow">
+                    <mat-label>Email:</mat-label>
+                    <input type="email" matInput placeholder="mail@email.com..." formControlName="email" class="grow">
+                </mat-form-field>
+
+                <div formArrayName="tels" class="fones">
+
+                    <mat-form-field appearance="fill" class="grow" *ngFor="let c of tels.controls; let i = index">
+                        <mat-label>Fone:</mat-label>
+                        <input type="tel" matInput placeholder="Digite seu contato...">
+                    </mat-form-field>
+                    <div>
+                        <button mat-icon-button color="accent" type="button" (click)="newContact()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn" type="button" (click)="deleteContact()">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-linha">
+                    <button mat-raised-button type="submit" color="accent" class="grow"
+                    [disabled]="formData.invalid">Cadastrar</button>
+                </div>
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+    <!-- [disabled]="formData.invalid" -->
+</div>
